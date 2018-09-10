@@ -1,5 +1,4 @@
-{% set version = '3012.100' %}
-
+{% set version = '3043.102' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,43 +9,51 @@ package:
 source:
   fn: timeDate_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/timeDate_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/timeDate/timeDate_{{ version }}.tar.gz
-
-
-  sha256: 6262ef7ca9f5eeb9db8229d6bb7a51d46d467a4fa73e2ccc5b4b78e18780c432
+    - {{ cran_mirror }}/src/contrib/timeDate_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/timeDate/timeDate_{{ version }}.tar.gz
+  sha256: 377cba03cddab8c6992e31d0683c1db3a73afa9834eee3e95b3b0723f02d7473
 
 build:
+  merge_build_host: True  # [win]
   number: 0
-
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: True  # [win32]
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
   run:
     - r-base
 
 test:
   commands:
-    - $R -e "library('timeDate')"  # [not win]
+    - $R -e "library('timeDate')"           # [not win]
     - "\"%R%\" -e \"library('timeDate')\""  # [win]
-
-
 
 about:
   home: https://www.rmetrics.org
   license: GPL (>= 2)
-  summary: Environment for teaching  "Financial Engineering and Computational Finance". Managing
-    chronological and calendar objects.
+  summary: The 'timeDate' class fulfils the conventions of the ISO 8601  standard as well as
+    of the ANSI C and POSIX standards. Beyond these standards it provides the "Financial
+    Center" concept which allows to handle data records collected in different time  zones
+    and mix them up to have always the proper time stamps with  respect to your personal
+    financial center, or alternatively to the GMT reference time. It can thus also handle
+    time stamps from historical  data records from the same time zone, even if the financial  centers
+    changed day light saving times at different calendar dates.
   license_family: GPL3
-
-
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - croth1
+    - johanneskoester
+    - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
