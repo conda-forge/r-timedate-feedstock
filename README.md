@@ -14,9 +14,8 @@ Summary: The 'timeDate' class fulfils the conventions of the ISO 8601  standard 
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-timedate-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-timedate-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/r-timedate-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-timedate-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-timedate-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-timedate-feedstock/branch/master)
+All platforms:
+[![noarch](https://img.shields.io/circleci/project/github/conda-forge/r-timedate-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/r-timedate-feedstock)
 
 Current release info
 ====================
