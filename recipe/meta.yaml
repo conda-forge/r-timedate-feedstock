@@ -14,9 +14,9 @@ source:
   sha256: 377cba03cddab8c6992e31d0683c1db3a73afa9834eee3e95b3b0723f02d7473
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 0
-  skip: true  # [win32]
+  number: 1000
   rpaths:
     - lib/R/lib/
     - lib/
@@ -45,8 +45,7 @@ about:
     time stamps from historical  data records from the same time zone, even if the financial  centers
     changed day light saving times at different calendar dates.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
