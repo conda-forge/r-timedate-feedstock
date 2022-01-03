@@ -51,9 +51,3 @@ extra:
   recipe-maintainers:
     - conda-forge/r
     - croth1
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
