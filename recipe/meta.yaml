@@ -7,16 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: timeDate_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/timeDate_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/timeDate/timeDate_{{ version }}.tar.gz
   sha256: 03ee76e87162cf97f6e63714af107f83abb385b424a98b34a13cbe98d87acc0e
 
 build:
-  merge_build_host: true  # [win]
-  noarch: generic
+  merge_build_host: True  # [win]
   number: 0
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
@@ -24,6 +23,7 @@ build:
 requirements:
   build:
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
   run:
@@ -36,11 +36,12 @@ test:
 
 about:
   home: https://www.rmetrics.org
-  license: GPL (>= 2)
+  license: GPL-2.0-or-later
   summary: The 'timeDate' class fulfils the conventions of the ISO 8601  standard as well as of the ANSI C and POSIX standards. Beyond these standards it provides the "Financial Center" concept which allows to handle data records collected in different time  zones and mix them up to have always the proper time stamps with  respect
     to your personal financial center, or alternatively to the GMT reference time. It can thus also handle time stamps from historical  data records from the same time zone, even if the financial  centers changed day light saving times at different calendar dates.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
