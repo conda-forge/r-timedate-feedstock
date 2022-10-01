@@ -1,4 +1,4 @@
-{% set version = "4021.104" %}
+{% set version = "4021.106" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/timeDate_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/timeDate/timeDate_{{ version }}.tar.gz
-  sha256: 03ee76e87162cf97f6e63714af107f83abb385b424a98b34a13cbe98d87acc0e
+  sha256: 14adf1ec6cbd80f11a243fa66ea943725a7a4c75923ae2d8e424235d500b10e2
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   noarch: generic
   rpaths:
